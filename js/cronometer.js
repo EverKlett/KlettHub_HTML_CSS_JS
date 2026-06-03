@@ -3,10 +3,35 @@ const btnStart = document.getElementById('btn-start');
 const btnPause = document.getElementById('btn-pause');
 const btnReset = document.getElementById('btn-reset');
 const output = document.querySelector('output');
+const initialTimeInput = document.getElementById('initial-time');
+const stepTimeInput = document.getElementById('step-time');
+
+// Initiate state and time variables
 let currentState = 'stopped';
-let timeInMs = 0;
+let timeInMs = getInitialTime();
+let interval = null;
 
 // Helper functions
+function getInitialTime() {
+  return initialTimeInput.value ? parseInt(initialTimeInput.value) * 1000 : 5000;
+}
+
+function getStepTime() {
+  return stepTimeInput.value ? parseInt(stepTimeInput.value) : 50;
+}
+
+function updateStepTime() {
+  interval && clearInterval(interval);
+
+  const stepTime = getStepTime();
+
+  interval = setInterval(() => {
+    if (currentState === 'running') {
+      updateOutput(stepTime);
+    }
+  }, stepTime);
+}
+
 function formatTime(ms) {
   // Calculate time components from milliseconds
   const totalSeconds = Math.floor(ms / 1000);
@@ -58,7 +83,7 @@ function stateMachine(event) {
           break;
 
         case 'reset':
-          timeInMs = 0;
+          timeInMs = getInitialTime();
           updateOutput();
           break;
       }
@@ -72,7 +97,7 @@ function stateMachine(event) {
           break;
 
         case 'reset':
-          timeInMs = 0;
+          timeInMs = getInitialTime();
           currentState = 'stopped';
           stateChanged = true;
           updateOutput();
@@ -99,15 +124,14 @@ window.addEventListener('keypress', (event) => {
     stateMachine('reset');
   }
 });
+initialTimeInput.addEventListener('change', () => {
+  timeInMs = getInitialTime();
+  updateOutput();
+});
+stepTimeInput.addEventListener('change', () => { updateStepTime() });
 
 // Initialize
 btnStart.disabled = false;
 btnPause.disabled = true;
 updateOutput();
-
-// Update output every 50ms when running
-setInterval(() => {
-  if (currentState === 'running') {
-    updateOutput(50);
-  }
-}, 50)
+updateStepTime();
