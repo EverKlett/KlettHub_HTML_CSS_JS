@@ -18,11 +18,12 @@
     "html-webpack-plugin": "^5.6.0",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^1.16.5",
+    "webpack-dev-server": "^5.2.4",
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
     "sass": "^1.100.0"
   }
 }
