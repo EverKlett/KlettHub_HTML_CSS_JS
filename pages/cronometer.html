@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KlettHub — To-do</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../scss/style.scss">
+  <meta name="description" content="KlettHub To-do page">
+
+  <meta property="og:title" content="KlettHub — To-do">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.png">
+
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <div class="d-flex flex-column min-vh-100">
+
+    <header id="site-nav"></header>
+
+    <div class="d-flex flex-column flex-md-row flex-grow-1">
+      <main class="flex-grow-1 p-3">
+
+        <!-- Jumbotron: -->
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+          <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold text-center">
+              Cronometer
+            </h1>
+            <p class="col-md-12 fs-4 text-center">
+              A simple cronometer for timing tasks.
+            </p>
+          </div>
+
+        </div>
+
+        <output class="d-block text-center display-2 my-2"></output>
+
+        <div class="d-grid d-md-flex justify-content-md-center gap-1 mx-2">
+          <button type="button" class="btn btn-success" id="btn-start">
+            <i class="bi bi-play-circle-fill"></i>
+            Start
+          </button>
+          <button type="button" class="btn btn-warning" id="btn-pause">
+            <i class="bi bi-pause-circle-fill"></i>
+            Pause
+          </button>
+          <button type="button" class="btn btn-danger" id="btn-reset">
+            <i class="bi bi-stop-circle-fill"></i>
+            Reset
+          </button>
+        </div>
+
+      </main>
+    </div>
+
+    <footer id="site-footer"></footer>
+
+  </div>
+
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/cronometer.js"></script>
+</body>
+
+</html>
